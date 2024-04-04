@@ -1,6 +1,5 @@
 import json
 from PersonalAssistant import PersonalAssistant
-import sys
 
 
 with open("todo.json", "r") as todos, open("birthdays.json", "r") as birthdays, open("contacts.json", "r") as contacts:
@@ -50,7 +49,7 @@ How can I help you?
     
     elif user_command == "4":
         print("Your current birthdays: \n")
-        for name in assistant.get_birthdays:
+        for name in assistant.get_birthdays():
           print(name)
         user_input = input("\nEnter a name: ")
         print(f"\n{assistant.get_birthday(user_input)}")
@@ -70,7 +69,7 @@ How can I help you?
    
     elif user_command == "7":
         print("Your current contacts: \n")
-        for name in assistant.get_contacts:
+        for name in assistant.get_contacts():
           print(name)
         user_input = input("\nEnter a name: ")
         print(f"\n{assistant.get_contact(user_input)}")
@@ -93,16 +92,6 @@ How can I help you?
     else:
         print("\nNot a valid command.")
 
-    # Check if input is provided through command line arguments
-if len(sys.argv) > 1:
-    user_command = sys.argv[1]
-else:
-    # Only call input() if there's a terminal to provide input
-    try:
-        user_command = input("Select a number or type 'Exit' to quit: ")
-    except EOFError:
-        print("No input provided. Exiting.")
-        sys.exit()
      
 
 
