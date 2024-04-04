@@ -1,5 +1,6 @@
 import json
 from PersonalAssistant import PersonalAssistant
+import sys
 
 
 with open("todo.json", "r") as todos, open("birthdays.json", "r") as birthdays, open("contacts.json", "r") as contacts:
@@ -91,6 +92,17 @@ How can I help you?
         print("\nGoodbye, see you soon!")
     else:
         print("\nNot a valid command.")
+
+    # Check if input is provided through command line arguments
+if len(sys.argv) > 1:
+    user_command = sys.argv[1]
+else:
+    # Only call input() if there's a terminal to provide input
+    try:
+        user_command = input("Select a number or type 'Exit' to quit: ")
+    except EOFError:
+        print("No input provided. Exiting.")
+        sys.exit()
      
 
 
